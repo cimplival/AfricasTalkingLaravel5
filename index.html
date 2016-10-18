@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Africa&#39;s Talking Laravel 5 API Package by valentinemwangi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Africa&#39;s Talking Laravel 5 API Package</h1>
+      <h2 class="project-tagline">A Laravel 5 package for integrating Africa&#39;s Talking Services to your Laravel Web Application.</h2>
+      <a href="https://github.com/valentinemwangi/AfricasTalkingLaravel5" class="btn">View on GitHub</a>
+      <a href="https://github.com/valentinemwangi/AfricasTalkingLaravel5/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/valentinemwangi/AfricasTalkingLaravel5/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>The Africa's Talking Laravel 5 API package is an easy to use package for Laravel that adds the capability to send and receive SMS messages to your Laravel web application. 
+This package allows you to use:</p>
+
+<ul>
+<li>Text Message Methods</li>
+<li>Subscription Services Methods </li>
+<li>Call methods</li>
+<li>Airtime methods</li>
+<li>User info methods</li>
+</ul>
+
+<h2>
+<a id="official-documentation" class="anchor" href="#official-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Official Documentation</h2>
+
+<p>This Africa's Talking Laravel 5 API package Documentation can be found <a href="https://freddiedfre.github.io/AfricasTalkingLaravel5">here</a>.</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ol>
+<li><strong>PHP 5.6+</strong></li>
+<li><strong>Laravel 5.2+</strong></li>
+</ol>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a id="composer" class="anchor" href="#composer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Composer</h3>
+
+<p>Run the following command on the terminal at root folder of your project:</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">$ <span class="pl-c1">composer</span> <span class="pl-k">require</span> <span class="pl-c1">freddiedfre</span><span class="pl-k">/</span><span class="pl-c1">africas_talking_laravel_5</span><span class="pl-k">=</span><span class="pl-c1">dev</span><span class="pl-k">-</span><span class="pl-c1">master</span></span></pre></div>
+
+<h3>
+<a id="service-provider" class="anchor" href="#service-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Provider</h3>
+
+<p>Next, you will need to register the service provider with Laravel by adding the service provider by modifying the providers array in <code>config/app.php</code>:</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>providers<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> [</span>
+<span class="pl-s1">    <span class="pl-c">//...</span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>FreddieDfre\AfricasTalkingLaravel5\AfricasTalkingLaravel5ServiceProvider::class,<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">],</span></pre></div>
+
+<h3>
+<a id="aliases" class="anchor" href="#aliases" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aliases</h3>
+
+<p>Finally, register the Facade.
+Add </p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>SMSProvider<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">FreddieDfre\AfricasTalkingLaravel5\</span><span class="pl-c1">AfricasTalkingLaravel5Facade</span><span class="pl-k">::</span><span class="pl-c1">class</span></span></pre></div>
+
+<p>in your <code>config/app.php</code> configuration file within the aliases array.</p>
+
+<h3>
+<a id="api-settings" class="anchor" href="#api-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API Settings</h3>
+
+<p>You must run the following command to save your configuration files to your local app:</p>
+
+<div class="highlight highlight-source-shell"><pre>$ php artisan vendor:publish</pre></div>
+
+<h3>
+<a id="driver-configuration" class="anchor" href="#driver-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Driver Configuration</h3>
+
+<p>Navigate to <code>config/AfricastalkingGateway.php</code> and fill in your username and api_key that you will get from your AfricasTalking Dashboard under the <code>settings tab-&gt;API KEY</code> on the <a href="https://www.africastalking.com">AfricasTalking website.</a></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">return</span> [<span class="pl-s"><span class="pl-pds">`</span></span></span>
+<span class="pl-s1"><span class="pl-s">    'username' =&gt; 'Replace this text with your AfricasTalking username.',</span></span>
+<span class="pl-s1"><span class="pl-s">    'api_key' =&gt; 'Replace this text with your API Key obtained from AfricasTalking.',<span class="pl-pds">`</span></span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">`</span>];</span></span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic Usage</h3>
+
+<p>This package operates in much of the same way as the Laravel Mail service provider. If you are familiar with this then the basic usage should feel like home. </p>
+
+<p>Always make sure to include the <code>use SMSProvider;</code> at the top of every controller where you intend to use this package. Then, in your controller functions the most basic way to handle messages is to use the following methods:</p>
+
+<ul>
+<li>Text Message Methods</li>
+</ul>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>sendMessage(<span class="pl-smi">$phoneno</span>, <span class="pl-smi">$message</span>);</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>sendMessage(<span class="pl-smi">$to_</span>, <span class="pl-smi">$message_</span>, <span class="pl-smi">$from_</span> <span class="pl-k">=</span> <span class="pl-c1">null</span>, <span class="pl-smi">$bulkSMSMode_</span> <span class="pl-k">=</span> <span class="pl-c1">1</span>, <span class="pl-k">Array</span> <span class="pl-smi">$options_</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>());</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>fetchMessages(<span class="pl-smi">$lastReceivedId_</span>);</span></pre></div>
+
+<ul>
+<li>Subscription Services Methods</li>
+</ul>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>createSubscription(<span class="pl-smi">$phoneNumber_</span>, <span class="pl-smi">$shortCode_</span>, <span class="pl-smi">$keyword_</span>);</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>deleteSubscription(<span class="pl-smi">$phoneNumber_</span>, <span class="pl-smi">$shortCode_</span>, <span class="pl-smi">$keyword_</span>);</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>fetchPremiumSubscriptions(<span class="pl-smi">$shortCode_</span>, <span class="pl-smi">$keyword_</span>, <span class="pl-smi">$lastReceivedId_</span> <span class="pl-k">=</span> <span class="pl-c1">0</span>);</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>getNumQueuedCalls(<span class="pl-smi">$phoneNumber_</span>, <span class="pl-smi">$queueName</span> <span class="pl-k">=</span> <span class="pl-c1">null</span>);</span></pre></div>
+
+<ul>
+<li>Call methods</li>
+</ul>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>call(<span class="pl-smi">$from_</span>, <span class="pl-smi">$to_</span>);</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>getNumQueuedCalls(<span class="pl-smi">$phoneNumber_</span>, <span class="pl-smi">$queueName</span> <span class="pl-k">=</span> <span class="pl-c1">null</span>);</span>
+<span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>uploadMediaFile(<span class="pl-smi">$url_</span>);</span></pre></div>
+
+<ul>
+<li>Airtime method</li>
+</ul>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>sendAirtime(<span class="pl-smi">$recipients</span>);</span></pre></div>
+
+<ul>
+<li>User Info method</li>
+</ul>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">SMSProvider</span><span class="pl-k">::</span>getUserData();</span></pre></div>
+
+<h2>
+<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licence</h2>
+
+<p>This package is open-sourced software licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>A great way to say thanks!</p>
+
+<ol>
+<li>Report a bug</li>
+<li>Report a security issue</li>
+<li>Contribute to a project</li>
+</ol>
+
+<p>Fork this project, make your changes, and submit a pull request. It's that easy. Cheers.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/valentinemwangi/AfricasTalkingLaravel5">Africa&#39;s Talking Laravel 5 API Package</a> is maintained by <a href="https://github.com/valentinemwangi">valentinemwangi</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
